@@ -1,0 +1,68 @@
+---
+const { targetId } = Astro.props;
+---
+
+<script>
+  import { useTeleport } from "../composables/teleport";
+  import {
+    enter as useEnterModal,
+    leave as useLeaveModal,
+  } from "../transitions/modal";
+
+  const modalElements = Array.from(
+    document.getElementsByClassName("modal-js") as HTMLCollection
+  ) as HTMLElement[];
+  const bodyElement = document.querySelector("body") as HTMLElement;
+  const closeModalElements = document.querySelectorAll(".modal-js svg");
+
+  bodyElement.addEventListener("modal", async (e) => {
+    modalElements.filter(async (modalElement: HTMLElement) => {
+      if (modalElement.getAttribute("data-target-id") === e.detail.id) {
+        await useEnterModal(modalElement);
+      }
+    });
+  });
+
+  bodyElement.addEventListener("keydown", async (e) => {
+    if (e.key === "Escape") {
+      await closeModal();
+    }
+  });
+
+  closeModalElements.forEach((closeModalElement) => {
+    closeModalElement.addEventListener("click", async () => {
+      await closeModal();
+    });
+  });
+
+  const closeModal = async () => {
+    for (const modalElement of modalElements) {
+      if (modalElement.style.width && modalElement.style.width !== "0" && modalElement.style.width !== "0px") {
+        await useLeaveModal(modalElement);
+      }
+    }
+  };
+
+  modalElements.forEach((modalElement) => {
+    useTeleport(modalElement);
+  });
+</script>
+
+<div
+  class="overflow-hidden fixed w-0 h-0 bg-white z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 modal-js"
+  role="dialog"
+  data-target-id={targetId}
+>
+  <svg
+    class="z-30 absolute top-1 right-1 fill-black cursor-pointer hover:bg-white rounded-full p-1 shadow transition-all bg-white/40 duration-700"
+    width="36"
+    height="36"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    ><path
+      d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
+    ></path>
+  </svg>
+  <slot />
+</div>

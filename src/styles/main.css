@@ -1,0 +1,14 @@
+@import url('https://api.fontshare.com/v2/css?f[]=synonym@300,600,400&f[]=chillax@400&display=swap');
+@import "./effects/hover.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: 0 0 0;
+        --color-secondary: 218 217 214;
+        --color-alternative: 152 118 84;
+    }
+}

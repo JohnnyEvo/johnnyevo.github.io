@@ -1,0 +1,84 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import Modal from "./Modal.astro";
+import Project from "./Project.astro";
+
+const projects = await Astro.glob("../projects/*.mdx");
+
+const leftProjects = projects.filter((project, index) => {
+  if (index % 2 === 0) {
+    return project;
+  }
+
+  return false;
+});
+
+const rightProjects = projects.filter((project, index) => {
+  if (index % 2 !== 0) {
+    return project;
+  }
+
+  return false;
+});
+---
+
+<script>
+  import { useProjectsAppear } from "../composables/projectsAppear";
+  import { useModal } from "../composables/modal";
+
+  await useProjectsAppear();
+  useModal();
+</script>
+
+<div
+  class="mt-12 md:mt-0 relative text-secondary overflow-y-scroll scroll-smooth snap-mandatory snap-y"
+>
+  <div
+    class="hidden md:block w-full h-32 bg-gradient-to-b from-black to-transparent fixed top-0 right-0 z-10"
+  >
+  </div>
+  <div
+    class="hidden md:block w-full h-32 bg-gradient-to-t from-black to-transparent fixed bottom-0 right-0 z-10"
+  >
+  </div>
+  <div class="md:grid grid-cols-2 md:gap-12 items-start">
+    <div class="grid grid-cols-1 gap-12" id="left-side">
+      {
+        leftProjects.map((project) => (
+          <div
+            class="snap-center translate-y-[30px] project-js"
+            id={project.frontmatter.title}
+          >
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-12 md:mt-0 grid grid-cols-1 md:mt-12 gap-12" id="right-side">
+      {
+        rightProjects.map((project) => (
+          <div
+            class="snap-center translate-y-[30px] project-js"
+            id={project.frontmatter.title}
+          >
+            <ProjectCard project={project} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+{
+  leftProjects.map((project) => (
+    <Modal targetId={project.frontmatter.title}>
+      <Project project={project}></Project>
+    </Modal>
+  ))
+}
+{
+  rightProjects.map((project) => (
+    <Modal targetId={project.frontmatter.title}>
+      <Project project={project}></Project>
+    </Modal>
+  ))
+}
