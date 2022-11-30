@@ -13,9 +13,15 @@ import image from "@astrojs/image";
 import compress from "astro-compress";
 
 // https://astro.build/config
+import robotsTxt from 'astro-robots-txt';
+
+// https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://johnnyevo.github.io/',
   integrations: [tailwind(), mdx(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  }), compress()]
+  }), compress(), robotsTxt(), sitemap()]
 });
