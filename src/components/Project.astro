@@ -1,4 +1,6 @@
 ---
+import { Picture } from "@astrojs/image/components";
+
 const { project } = Astro.props;
 ---
 
@@ -30,10 +32,12 @@ const { project } = Astro.props;
 </script>
 
 <div class="relative w-full h-full">
-  <img
-    src={`/img/${project.frontmatter.screenshot}`}
-    alt={project.frontmatter.title}
-    class="object-cover w-full h-full"
+  <Picture
+    src={import(`../assets/img/${project.frontmatter.screenshot}.png`)}
+    alt=""
+    fit="cover"
+    widths={[300, 800, 1024, 1400]} sizes="(max-width: 500px) 300px, (max-width: 800px) 800px, (max-width: 1024px) 1024px, 1400px"
+    class="w-full h-full object-cover"
   />
   <div
     class="absolute w-full h-full top-0 left-0 p-6 overflow-scroll snap-mandatory snap-y container-js"

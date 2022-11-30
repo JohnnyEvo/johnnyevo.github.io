@@ -1,13 +1,17 @@
 ---
+import { Picture } from "@astrojs/image/components";
+
 const { project } = Astro.props;
 ---
 
 <div
   class="h-screen overflow-hidden rounded-xl group cursor-pointer relative md:h-[25rem]"
 >
-  <img
-    src={`/img/${project.frontmatter.miniature}`}
-    alt={project.frontmatter.title}
+  <Picture
+    src={import(`../assets/img/${project.frontmatter.miniature}.png`)}
+    alt=""
+    fit="cover"
+    widths={[300, 500]} sizes="(max-width: 800px) 300px, 800px"
     class="object-cover w-full h-full group-hover:scale-105 transition-all duration-700"
   />
   <div
