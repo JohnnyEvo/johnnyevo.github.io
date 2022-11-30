@@ -1,37 +1,33 @@
 <script>
-import {animate, stagger} from "motion";
+  import { animate, stagger } from "motion";
 
-let nameSplitting = document.getElementsByClassName("chars");
+  let nameSplitting = document.getElementsByClassName("chars");
 
-new Promise(resolve => {
-  setTimeout(() => resolve(true), 1000);
-}).then(() => {
   animate(
-      nameSplitting
-      , {color: "rgb(var(--color-secondary) / 1)"}
-      , {delay: stagger(0.1)})
-      .finished
-})
+    nameSplitting,
+    { color: "rgb(var(--color-secondary) / 1)" },
+    { delay: stagger(0.1) }
+  ).finished;
 </script>
 
-  <h1 class="text-6xl md:text-7xl font-title text-secondary/20">
-    <span class="block text-secondary/20">
-      <span class="not-sr-only chars">J</span>
-      <span class="not-sr-only chars">o</span>
-      <span class="not-sr-only chars">h</span>
-      <span class="not-sr-only chars">n</span>
-      <span class="not-sr-only chars">n</span>
-      <span class="not-sr-only chars">y</span>
-    </span>
-    <span class="not-sr-only chars">C</span>
-    <span class="not-sr-only chars">h</span>
-    <span class="not-sr-only chars">a</span>
-    <span class="not-sr-only chars">r</span>
-    <span class="not-sr-only chars">c</span>
+<h1 class="text-6xl md:text-7xl font-title text-secondary/20">
+  <span class="block text-secondary/20">
+    <span class="not-sr-only chars">J</span>
     <span class="not-sr-only chars">o</span>
-    <span class="not-sr-only chars">s</span>
-    <span class="not-sr-only chars">s</span>
-    <span class="not-sr-only chars">e</span>
-    <span class="not-sr-only chars">t</span>
-    <span class="sr-only">Johnny Charcosset</span>
-  </h1>
+    <span class="not-sr-only chars">h</span>
+    <span class="not-sr-only chars">n</span>
+    <span class="not-sr-only chars">n</span>
+    <span class="not-sr-only chars">y</span>
+  </span>
+  <span class="not-sr-only chars">C</span>
+  <span class="not-sr-only chars">h</span>
+  <span class="not-sr-only chars">a</span>
+  <span class="not-sr-only chars">r</span>
+  <span class="not-sr-only chars">c</span>
+  <span class="not-sr-only chars">o</span>
+  <span class="not-sr-only chars">s</span>
+  <span class="not-sr-only chars">s</span>
+  <span class="not-sr-only chars">e</span>
+  <span class="not-sr-only chars">t</span>
+  <span class="sr-only">Johnny Charcosset</span>
+</h1>
