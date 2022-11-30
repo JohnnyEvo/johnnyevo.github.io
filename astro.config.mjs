@@ -10,9 +10,12 @@ import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 
 // https://astro.build/config
+import compress from "astro-compress";
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://johnnyevo.github.io/',
   integrations: [tailwind(), mdx(), image({
     serviceEntryPoint: '@astrojs/image/sharp'
-  })]
+  }), compress()]
 });
