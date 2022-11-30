@@ -31,7 +31,7 @@ const rightProjects = projects.filter((project, index) => {
 </script>
 
 <div
-  class="mt-12 md:mt-0 relative text-secondary overflow-y-scroll scroll-smooth snap-mandatory snap-y"
+  class="mt-12 md:mt-0 relative text-secondary md:overflow-y-scroll md:scroll-smooth md:snap-mandatory md:snap-y"
 >
   <div
     class="hidden md:block w-full h-32 bg-gradient-to-b from-black to-transparent fixed top-0 right-0 z-10"
@@ -41,8 +41,8 @@ const rightProjects = projects.filter((project, index) => {
     class="hidden md:block w-full h-32 bg-gradient-to-t from-black to-transparent fixed bottom-0 right-0 z-10"
   >
   </div>
-  <div class="md:grid grid-cols-2 md:gap-12 items-start">
-    <div class="grid grid-cols-1 gap-12" id="left-side">
+  <div class="md:grid md:grid-cols-2 md:gap-12 md:items-start">
+    <div class="md:grid md:grid-cols-1 md:gap-12" id="left-side">
       {
         leftProjects.map((project) => (
           <div
@@ -54,7 +54,7 @@ const rightProjects = projects.filter((project, index) => {
         ))
       }
     </div>
-    <div class="mt-12 md:mt-0 grid grid-cols-1 md:mt-12 gap-12" id="right-side">
+    <div class="md:mt-12 md:mt-0 md:grid md:grid-cols-1 md:mt-12 md:gap-12" id="right-side">
       {
         rightProjects.map((project) => (
           <div

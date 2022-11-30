@@ -3,7 +3,7 @@ import '../styles/main.css';
 ---
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth snap-mandatory snap-y md:scroll-none">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -13,7 +13,7 @@ import '../styles/main.css';
 
 		<meta name="description" content="Portfolio de Johnny Charcosset, développeur web, php, javascript">
 	</head>
-	<body class="bg-primary h-screen w-screen overflow-hidden p-2 md:p-4">
+	<body class="bg-primary h-screen w-screen scroll-smooth snap-mandatory snap-y md:overflow-hidden md:p-4">
 		<slot />
 	</body>
 </html>
