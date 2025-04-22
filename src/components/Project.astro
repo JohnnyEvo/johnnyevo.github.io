@@ -36,22 +36,23 @@ const { project } = Astro.props;
     src={import(`../assets/img/${project.frontmatter.screenshot}.png`)}
     alt=""
     fit="cover"
-    widths={[300, 800, 1024, 1400]} sizes="(max-width: 500px) 300px, (max-width: 800px) 800px, (max-width: 1024px) 1024px, 1400px"
+    widths={[300, 800, 1024, 1400]}
+    sizes="(max-width: 500px) 300px, (max-width: 800px) 800px, (max-width: 1024px) 1024px, 1400px"
     class="w-full h-full object-cover"
   />
   <div
     class="absolute w-full h-full top-0 left-0 p-6 overflow-scroll snap-mandatory snap-y container-js"
   >
-    <div class="h-full flex justify-center items-center snap-center">
-      <div
+    <article class="h-full flex justify-center items-center snap-center">
+      <header
         class="rounded flex flex-col justify-center items-center bg-white max-w-lg w-full h-full max-h-36 p-4 opacity-90 hover:opacity-100 transition-all duration-700"
       >
         <h2 class="font-title text-4xl font-bold">
           {project.frontmatter.title}
         </h2>
         <aside class="text-xl my-2">{project.frontmatter.description}</aside>
-      </div>
-    </div>
+      </header>
+    </article>
     {
       project.frontmatter.contents.map(
         (content: { title: string; text: string }) => (

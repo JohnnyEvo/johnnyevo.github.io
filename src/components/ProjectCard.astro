@@ -4,22 +4,24 @@ import { Picture } from "@astrojs/image/components";
 const { project } = Astro.props;
 ---
 
-<div
+<figure
   class="h-screen overflow-hidden md:rounded-xl group cursor-pointer relative md:h-[25rem]"
 >
   <Picture
+    role="presentation"
     src={import(`../assets/img/${project.frontmatter.miniature}.png`)}
     alt=""
     fit="cover"
-    widths={[300, 500]} sizes="(max-width: 800px) 300px, 800px"
+    widths={[300, 500]}
+    sizes="(max-width: 800px) 300px, 800px"
     class="object-cover w-full h-full group-hover:scale-105 transition-all duration-700"
   />
-  <div
+  <figcaption
     class="flex flex-col justify-center items-center text-primary absolute bottom-0 left-0 z-10 w-full h-1/5 bg-white/60 md:translate-y-full md:group-hover:translate-y-0 transition-all duration-1000"
   >
     <h2 class="font-bold font-title">{project.frontmatter.title}</h2>
     <p class="text-sm text-center">
       {project.frontmatter.description}
     </p>
-  </div>
-</div>
+  </figcaption>
+</figure>

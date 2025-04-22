@@ -6,12 +6,114 @@ import '../styles/main.css';
 <html lang="fr" class="scroll-smooth snap-mandatory snap-y md:scroll-none">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+  		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content="Développeur web passionné, je conçois des expériences numériques accessibles, modernes et performantes. Découvrez mes projets et compétences.">
+		<meta name="author" content="Johnny Charcosset">
+		<meta name="keywords" content="développeur web, Johnny Charcosset, portfolio, HTML, CSS, JavaScript, accessibilité, SEO, Vue, frontend, projets, opquast, PHP, Symfony, React, Astro, Tailwind, Laravel, Node, internet, site" />
+		<meta name="theme-color" content="#0f172a">
+		<meta name="robots" content="index, follow">
+  		<meta name="googlebot" content="index, follow">
+
+		<meta property="og:title" content="Johnny Charcosset – Développeur Web">
+  		<meta property="og:description" content="Développeur web passionné, je conçois des expériences numériques accessibles, modernes et performantes.">
+  		<meta property="og:type" content="website">
+  		<meta property="og:url" content="https://johnnyevo.github.io/">
+  		<meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4E03AQGmYuzA2vy0Ow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1684765953123?e=1750896000&v=beta&t=uQ-U2G_lDub4fR2WuD-0fDZB57044aalb-h1wmuGcyw">
+
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
 		<title>Portfolio de Johnny Charcosset : Développeur web</title>
 
-		<meta name="description" content="Portfolio de Johnny Charcosset, développeur web, php, javascript">
+		<script is:inline type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Johnny Charcosset",
+			"alternateName": "Johnny Evo",
+			"url": "https://johnnyevo.github.io/",
+			"image": "https://media.licdn.com/dms/image/v2/D4E03AQGmYuzA2vy0Ow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1684765953123?e=1750896000&v=beta&t=uQ-U2G_lDub4fR2WuD-0fDZB57044aalb-h1wmuGcyw",
+			"sameAs": [
+				"https://github.com/JohnnyEvo",
+				"https://www.linkedin.com/in/johnnycharcosset/"
+			],
+			"jobTitle": "Développeur Web",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "Steeple"
+			},
+			"description": "Développeur web spécialisé en accessibilité, performance et design moderne. Expertise en Vue, Node, Laravel, Tailwind, et plus.",
+			"knowsAbout": [
+				"Accessibilité Web",
+				"Développement Frontend",
+				"Vue",
+				"Laravel",
+				"Tailwind CSS",
+				"SEO",
+				"Node.js"
+			],
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "FR"
+			}
+		}
+		</script>
+		<script is:inline type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Accueil",
+				"item": "https://johnnyevo.github.io/"
+				}
+			]
+		}
+		</script>
+		<script is:inline type="application/ld+json">
+		[
+			{
+				"@context": "https://schema.org",
+				"@type": "Project",
+				"name": "Battle",
+				"description": "Jeu de bataille de cartes",
+				"url": "https://github.com/JohnnyEvo/battle",
+				"image": "https://johnnyevo.github.io/assets/battle_min.974866ed_UNBjQ.avif",
+				"sameAs": "https://github.com/JohnnyEvo/battle"
+			},
+			{
+				"@context": "https://schema.org",
+				"@type": "Project",
+				"name": "Alexis Jeanniard - Psychologue",
+				"description": "Site vitrine pour un cabinet de psychologie",
+				"url": "https://psychology-sepia.vercel.app/",
+				"image": "https://johnnyevo.github.io/assets/psychology_min.66f4a8fb_Z2tbt4.avif",
+				"sameAs": "https://psychology-sepia.vercel.app/"
+			},
+			{
+				"@context": "https://schema.org",
+				"@type": "Project",
+				"name": "QuizzUp",
+				"description": "Projet de quizz avec Nuxt3 et Typescript",
+				"url": "https://github.com/JohnnyEvo/quizz",
+				"image": "https://johnnyevo.github.io/assets/quizz_min.086cf376_ZUEP6U.avif",
+				"sameAs": "https://github.com/JohnnyEvo/quizz"
+			},
+			{
+				"@context": "https://schema.org",
+				"@type": "Project",
+				"name": "Todo",
+				"description": "Une todo list réalisée avec Svelte",
+				"url": "https://github.com/JohnnyEvo/svelte-todo",
+				"image": "https://johnnyevo.github.io/assets/todo_min.612beaa5_Z1zcIwe.avif",
+				"sameAs": "https://github.com/JohnnyEvo/svelte-todo"
+			}
+		]
+		</script>
+
 	</head>
 	<body class="bg-primary h-screen w-screen scroll-smooth snap-mandatory snap- md:scroll-none md:overflow-hidden md:p-4">
 		<slot />
