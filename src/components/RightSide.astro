@@ -5,7 +5,11 @@ import Project from "./Project.astro";
 
 const projects = await Astro.glob("../projects/*.mdx");
 
-const leftProjects = projects.filter((project, index) => {
+const sortedProjects = projects.sort((a, b) => {
+  return b.frontmatter.sequence - a.frontmatter.sequence;
+});
+
+const leftProjects = sortedProjects.filter((project, index) => {
   if (index % 2 === 0) {
     return project;
   }
@@ -13,7 +17,7 @@ const leftProjects = projects.filter((project, index) => {
   return false;
 });
 
-const rightProjects = projects.filter((project, index) => {
+const rightProjects = sortedProjects.filter((project, index) => {
   if (index % 2 !== 0) {
     return project;
   }
