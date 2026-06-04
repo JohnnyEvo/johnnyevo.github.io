@@ -3,26 +3,10 @@ import ProjectCard from "./ProjectCard.astro";
 import Modal from "./Modal.astro";
 import Project from "./Project.astro";
 
-const projects = await Astro.glob("../projects/*.mdx");
+const projects = await Object.values(import.meta.glob("../projects/*.mdx", { eager: true })) as any[];
 
 const sortedProjects = projects.sort((a, b) => {
   return b.frontmatter.sequence - a.frontmatter.sequence;
-});
-
-const leftProjects = sortedProjects.filter((project, index) => {
-  if (index % 2 === 0) {
-    return project;
-  }
-
-  return false;
-});
-
-const rightProjects = sortedProjects.filter((project, index) => {
-  if (index % 2 !== 0) {
-    return project;
-  }
-
-  return false;
 });
 ---
 
@@ -34,53 +18,27 @@ const rightProjects = sortedProjects.filter((project, index) => {
   useModal();
 </script>
 
-<div
-  class="mt-12 md:mt-0 relative text-secondary md:overflow-y-auto md:scroll-smooth md:snap-mandatory md:snap-y scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black"
->
-  <div
-    class="hidden md:block w-full h-32 bg-gradient-to-b from-black to-transparent fixed top-0 right-0 z-10"
-  >
-  </div>
-  <div
-    class="hidden md:block w-full h-32 bg-gradient-to-t from-black to-transparent fixed bottom-0 right-0 z-10"
-  >
-  </div>
-  <div class="md:grid md:grid-cols-2 md:gap-12 md:items-start">
-    <div class="md:grid md:grid-cols-1 md:gap-12" id="left-side">
-      {
-        leftProjects.map((project) => (
-          <div
-            class="snap-center translate-y-[30px] project-js"
-            id={project.frontmatter.title}
-          >
-            <ProjectCard project={project} />
-          </div>
-        ))
-      }
-    </div>
-    <div class="md:mt-12 md:mt-0 md:grid md:grid-cols-1 md:mt-12 md:gap-12" id="right-side">
-      {
-        rightProjects.map((project) => (
-          <div
-            class="snap-center translate-y-[30px] project-js"
-            id={project.frontmatter.title}
-          >
-            <ProjectCard project={project} />
-          </div>
-        ))
-      }
-    </div>
+<div class="mt-24">
+  <h2 class="font-title font-black text-4xl md:text-6xl uppercase tracking-tighter mb-12 border-b-8 border-text inline-block">
+    Sélection de travaux
+  </h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    {
+      sortedProjects.map((project) => (
+        <div
+          class="project-js"
+          id={project.frontmatter.title}
+        >
+          <ProjectCard project={project} />
+        </div>
+      ))
+    }
   </div>
 </div>
+
 {
-  leftProjects.map((project) => (
-    <Modal targetId={project.frontmatter.title}>
-      <Project project={project}></Project>
-    </Modal>
-  ))
-}
-{
-  rightProjects.map((project) => (
+  sortedProjects.map((project) => (
     <Modal targetId={project.frontmatter.title}>
       <Project project={project}></Project>
     </Modal>

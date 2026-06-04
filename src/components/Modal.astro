@@ -13,12 +13,22 @@ const { targetId } = Astro.props;
     document.getElementsByClassName("modal-js") as HTMLCollection
   ) as HTMLElement[];
   const bodyElement = document.querySelector("body") as HTMLElement;
-  const closeModalElements = document.querySelectorAll(".modal-js svg");
+  const closeModalElements = document.querySelectorAll(".modal-js button");
+  let lastFocusedElement: HTMLElement | null = null;
 
   bodyElement.addEventListener("modal", async (e) => {
+    lastFocusedElement = document.activeElement as HTMLElement;
+    
     modalElements.filter(async (modalElement: HTMLElement) => {
-      if (modalElement.getAttribute("data-target-id") === e.detail.id) {
+      if (modalElement.getAttribute("data-target-id") === (e as CustomEvent).detail.id) {
+        modalElement.classList.remove("hidden");
+        bodyElement.classList.add("overflow-hidden");
+        
         await useEnterModal(modalElement);
+        
+        // Focus the close button for accessibility
+        const closeBtn = modalElement.querySelector('button');
+        if (closeBtn) closeBtn.focus();
       }
     });
   });
@@ -37,8 +47,15 @@ const { targetId } = Astro.props;
 
   const closeModal = async () => {
     for (const modalElement of modalElements) {
-      if (modalElement.style.width && modalElement.style.width !== "0" && modalElement.style.width !== "0px") {
+      if (!modalElement.classList.contains("hidden")) {
         await useLeaveModal(modalElement);
+        modalElement.classList.add("hidden");
+        bodyElement.classList.remove("overflow-hidden");
+        
+        // Restore focus
+        if (lastFocusedElement) {
+          lastFocusedElement.focus();
+        }
       }
     }
   };
@@ -49,20 +66,28 @@ const { targetId } = Astro.props;
 </script>
 
 <div
-  class="overflow-hidden fixed w-0 h-0 bg-white z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 modal-js"
+  class="hidden overflow-hidden fixed w-0 h-0 bg-bg z-[100] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 modal-js brutalist-border brutalist-shadow"
   role="dialog"
+  aria-modal="true"
+  aria-labelledby={`title-${targetId}`}
   data-target-id={targetId}
 >
-  <svg
-    class="z-30 absolute top-1 right-1 fill-black cursor-pointer hover:bg-white rounded-full p-1 shadow transition-all bg-white/40 duration-700"
-    width="36"
-    height="36"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    ><path
-      d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
-    ></path>
-  </svg>
+  <button
+    class="z-[110] absolute top-4 right-4 bg-accent-pink brutalist-border p-2 brutalist-shadow-sm hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all focus:outline-4 focus:outline-accent"
+    aria-label="Fermer la modale"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="4"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        d="M18 6L6 18M6 6l12 12"
+      ></path>
+    </svg>
+  </button>
   <slot />
 </div>

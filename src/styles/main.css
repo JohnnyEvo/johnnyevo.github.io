@@ -1,4 +1,4 @@
-@import url('https://api.fontshare.com/v2/css?f[]=synonym@300,600,400&f[]=chillax@400&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=synonym@300,600,400&f[]=chillax@400,600,700&display=swap');
 @import "./effects/hover.css";
 
 @tailwind base;
@@ -7,8 +7,48 @@
 
 @layer base {
     :root {
-        --color-primary: 0 0 0;
-        --color-secondary: 218 217 214;
-        --color-alternative: 152 118 84;
+        --color-bg: 244 244 240;
+        --color-text: 17 17 17;
+        --color-accent: 59 130 246;
+        --color-accent-yellow: 253 224 71;
+        --color-accent-pink: 244 114 182;
+        --color-accent-green: 74 222 128;
+        --color-shadow: 0 0 0;
+        
+        --color-primary: var(--color-bg);
+        --color-secondary: var(--color-text);
+        --color-alternative: var(--color-accent);
     }
+
+    :root.dark {
+        --color-bg: 17 17 17;
+        --color-text: 244 244 240;
+        --color-accent: 96 165 250;
+        --color-accent-yellow: 234 179 8;
+        --color-accent-pink: 219 39 119;
+        --color-accent-green: 22 163 74;
+        --color-shadow: 244 244 240;
+    }
+}
+
+@layer components {
+    .brutalist-shadow {
+        box-shadow: 6px 6px 0px 0px rgb(var(--color-shadow));
+    }
+    .brutalist-shadow-sm {
+        box-shadow: 3px 3px 0px 0px rgb(var(--color-shadow));
+    }
+    .brutalist-shadow-active {
+        box-shadow: 2px 2px 0px 0px rgb(var(--color-shadow));
+        transform: translate(4px, 4px);
+    }
+    .brutalist-border {
+        border: 3px solid rgb(var(--color-shadow));
+    }
+}
+
+body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-text));
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
