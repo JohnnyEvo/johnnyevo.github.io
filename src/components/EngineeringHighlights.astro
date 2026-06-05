@@ -1,21 +1,26 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const highlights = [
   {
-    category: "Architecture Mobile Hybride",
-    title: "Convergence Native & Web",
-    description: "Conception d'architectures cross-platform sous Ionic 8 et Capacitor. Gestion avancée des APIs natives : permissions hardware complexes, intégrations santé (HealthKit / Health Connect) et stratégies de stockage hors-ligne pour des environnements critiques.",
+    category: t('highlights.h1.category'),
+    title: t('highlights.h1.title'),
+    description: t('highlights.h1.desc'),
     tags: ["Ionic 8", "Capacitor", "Mobile Health", "Native APIs"]
   },
   {
-    category: "Industrialisation SaaS",
-    title: "Vélocité & Systèmes Complexes",
-    description: "Accélération du Time-to-Market via Laravel et Filament. Mise en place de structures multi-tenant robustes, de tunnels de monétisation hybrides (Stripe/IAP) et de tableaux de bord administratifs haute performance, le tout dans un respect strict du RGPD.",
+    category: t('highlights.h2.category'),
+    title: t('highlights.h2.title'),
+    description: t('highlights.h2.desc'),
     tags: ["Laravel 12", "Filament", "Multi-tenancy", "Fintech"]
   },
   {
-    category: "Engineering & DevXP",
-    title: "Écosystèmes Front-end Durables",
-    description: "Pilotage de Monorepos (pnpm) et création de Design Systems headless garantissant l'accessibilité à grande échelle (standards Opquast). Automatisation de la qualité via Playwright (E2E) et Vitest, optimisant la fiabilité des livraisons.",
+    category: t('highlights.h3.category'),
+    title: t('highlights.h3.title'),
+    description: t('highlights.h3.desc'),
     tags: ["Monorepo", "Design Systems", "A11y", "Testing"]
   }
 ];
@@ -23,7 +28,7 @@ const highlights = [
 
 <section class="mt-24">
   <h2 class="font-title font-black text-4xl md:text-6xl uppercase tracking-tighter mb-16 border-b-8 border-text inline-block">
-    Engineering Highlights
+    {t('highlights.title')}
   </h2>
   
   <div class="grid grid-cols-1 gap-12">

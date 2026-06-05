@@ -1,35 +1,39 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section class="my-32 border-y-8 border-text py-20 bg-accent-yellow dark:bg-accent-yellow/10">
+<section class="my-32 border-y-8 border-text px-8 py-20 bg-accent-yellow dark:bg-accent-yellow/10">
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 text-text">
     <div class="flex flex-col gap-6">
       <span class="text-7xl font-black opacity-20 leading-none">01</span>
-      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">Accessibilité Radicale</h3>
+      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">{t('manifesto.01.title')}</h3>
       <p class="font-bold leading-snug uppercase text-xs tracking-tight">
-        L'accessibilité n'est pas une option, c'est un droit. Chaque ligne de code est pensée pour garantir une expérience sans barrière, certifiée par mon expertise Opquast.
+        {t('manifesto.01.desc')}
       </p>
     </div>
     <div class="flex flex-col gap-6">
       <span class="text-7xl font-black opacity-20 leading-none">02</span>
-      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">Privacy First</h3>
+      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">{t('manifesto.02.title')}</h3>
       <p class="font-bold leading-snug uppercase text-xs tracking-tight">
-        L'éthique est au cœur de l'ingénierie. Je déploie des solutions cookie-less et respectueuses du RGPD pour protéger l'intégrité des données utilisateurs.
+        {t('manifesto.02.desc')}
       </p>
     </div>
     <div class="flex flex-col gap-6">
       <span class="text-7xl font-black opacity-20 leading-none">03</span>
-      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">Qualité Industrielle</h3>
+      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">{t('manifesto.03.title')}</h3>
       <p class="font-bold leading-snug uppercase text-xs tracking-tight">
-        Je milite pour un code testé, documenté et maintenable. L'industrialisation (Monorepo, CI/CD) assure la pérennité et la scalabilité des produits complexes.
+        {t('manifesto.03.desc')}
       </p>
     </div>
     <div class="flex flex-col gap-6">
       <span class="text-7xl font-black opacity-20 leading-none">04</span>
-      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">Ingénierie Augmentée</h3>
+      <h3 class="font-title font-black text-2xl uppercase tracking-tighter">{t('manifesto.04.title')}</h3>
       <p class="font-bold leading-snug uppercase text-xs tracking-tight">
-        L'IA décuple ma vélocité sans jamais remplacer mon discernement. J'utilise ces outils pour automatiser les tâches ingrates et me focaliser sur la valeur produit.
+        {t('manifesto.04.desc')}
       </p>
     </div>
   </div>

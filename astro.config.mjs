@@ -8,6 +8,13 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://johnnyevo.github.io/',
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en', 'es'],
+    routing: {
+      prefixDefault: false
+    }
+  },
   integrations: [
     tailwind(), 
     mdx(), 

@@ -1,50 +1,56 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 <section class="text-text block mt-8 mb-8 text-justify md:text-left font-medium leading-relaxed">
   <h2 id="presentation-title" class="sr-only">Présentation</h2>
 
   <div class="mb-4">
     <span class="inline-flex items-center gap-2 brutalist-border bg-white dark:bg-accent-green/20 px-3 py-1 font-black text-xs uppercase tracking-widest animate-pulse">
         <span class="w-2 h-2 rounded-full bg-accent-green"></span>
-        Status: Product Engineering @ Boli (Med-Tech)
+        {t('aside.status')}
     </span>
   </div>
 
   <div class="mb-8 flex flex-wrap gap-3">
-    <span class="brutalist-border bg-accent-yellow px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">Product Engineer</span>
-    <span class="brutalist-border bg-accent-pink px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">Ionic / Capacitor 8</span>
-    <span class="brutalist-border bg-accent-green px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">Laravel 12 Expert</span>
-    <span class="brutalist-border bg-white dark:bg-white/10 px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">A11y / Opquast</span>
+    <span class="brutalist-border bg-accent-yellow px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">{t('aside.tag.pe')}</span>
+    <span class="brutalist-border bg-accent-pink px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">{t('aside.tag.mobile')}</span>
+    <span class="brutalist-border bg-accent-green px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">{t('aside.tag.backend')}</span>
+    <span class="brutalist-border bg-white dark:bg-white/10 px-4 py-1 font-black text-xs uppercase tracking-widest shadow-[2px_2px_0px_0px_rgb(var(--color-shadow))]">{t('aside.tag.a11y')}</span>
   </div>
 
   <p class="mb-6 text-xl md:text-2xl font-bold tracking-tight">
-    Je bâtis des produits qui allient vélocité SaaS et rigueur médicale.
+    {t('aside.title')}
   </p>
 
   <p class="mb-4">
-    Ingénieur produit polyvalent, je réconcilie deux mondes : la livraison ultra-rapide d'interfaces administratives complexes (<strong>Laravel / Filament</strong>) et l'exigence absolue d'une expérience mobile santé centrée patient (<strong>Vue 3 / Ionic</strong>).
+    {t('aside.p1')}
   </p>
 
   <p class="mb-4">
-    De l'intégration native (<strong>Apple Health / Health Connect</strong>) aux infrastructures <strong>multi-tenant</strong>, je déploie des systèmes industriels robustes (Monorepo pnpm, Playwright) sans jamais sacrifier la vie privée : l'éthique et l'accessibilité sont pour moi des standards non-négociables.
+    {t('aside.p2')}
   </p>
 
   <div class="mt-12">
-    <h3 class="font-title font-black text-2xl uppercase mb-6 border-b-8 border-text inline-block">Maîtrise de l'Impact</h3>
+    <h3 class="font-title font-black text-2xl uppercase mb-6 border-b-8 border-text inline-block">{t('aside.impact.title')}</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="brutalist-border p-4 bg-white dark:bg-white/10 brutalist-shadow-sm">
-            <h4 class="font-black uppercase text-xs mb-2 text-accent">Core & Mobile</h4>
-            <p class="text-sm font-bold">Vue 3 (Setup), TS Strict, Ionic 8, Capacitor (Permissions & Santé).</p>
+            <h4 class="font-black uppercase text-xs mb-2 text-accent">{t('aside.impact.mobile.title')}</h4>
+            <p class="text-sm font-bold">{t('aside.impact.mobile.desc')}</p>
         </div>
         <div class="brutalist-border p-4 bg-white dark:bg-white/10 brutalist-shadow-sm">
-            <h4 class="font-black uppercase text-xs mb-2 text-accent-pink">SaaS & Backend</h4>
-            <p class="text-sm font-bold">Laravel 12, Filament SaaS, Stripe / IAP, Privacy (Umami/RGPD).</p>
+            <h4 class="font-black uppercase text-xs mb-2 text-accent-pink">{t('aside.impact.saas.title')}</h4>
+            <p class="text-sm font-bold">{t('aside.impact.saas.desc')}</p>
         </div>
         <div class="brutalist-border p-4 bg-white dark:bg-white/10 brutalist-shadow-sm">
-            <h4 class="font-black uppercase text-xs mb-2 text-accent-green">Design Systems</h4>
-            <p class="text-sm font-bold">UnoCSS, Reka UI (Headless), Logiciel de design partagé.</p>
+            <h4 class="font-black uppercase text-xs mb-2 text-accent-green">{t('aside.impact.design.title')}</h4>
+            <p class="text-sm font-bold">{t('aside.impact.design.desc')}</p>
         </div>
         <div class="brutalist-border p-4 bg-white dark:bg-white/10 brutalist-shadow-sm">
-            <h4 class="font-black uppercase text-xs mb-2 text-accent-yellow">Industrie & DevXP</h4>
-            <p class="text-sm font-bold">Monorepo pnpm, Vitest, Playwright, Automatisation IA (Cursor).</p>
+            <h4 class="font-black uppercase text-xs mb-2 text-accent-yellow">{t('aside.impact.culture.title')}</h4>
+            <p class="text-sm font-bold">{t('aside.impact.culture.desc')}</p>
         </div>
     </div>
   </div>

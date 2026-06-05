@@ -1,11 +1,17 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 <div class="flex flex-wrap justify-center md:justify-start w-full gap-6 mt-12">
   <a
     href="https://github.com/JohnnyEvo/"
     target="_blank"
     rel="noopener noreferrer"
-    class="uppercase font-black brutalist-border bg-white px-8 py-4 brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-center flex-1 md:flex-none tracking-widest text-sm"
+    class="uppercase font-black brutalist-border bg-white dark:bg-white text-black px-8 py-4 brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-center flex-1 md:flex-none tracking-widest text-sm"
   >
-    <span>Explorer mon code</span>
+    <span>{t('nav.code')}</span>
   </a>
   <a
     href="https://www.linkedin.com/in/johnny-charcosset/"
@@ -13,6 +19,6 @@
     rel="noopener noreferrer"
     class="uppercase font-black brutalist-border bg-accent-pink px-8 py-4 brutalist-shadow hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-center flex-1 md:flex-none tracking-widest text-sm"
   >
-    <span>Discuter sur LinkedIn</span>
+    <span>{t('nav.chat')}</span>
   </a>
 </div>

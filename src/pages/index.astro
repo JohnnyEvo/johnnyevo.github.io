@@ -3,12 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import LeftSide from '../components/LeftSide.astro';
 import Manifesto from '../components/Manifesto.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
 import EngineeringHighlights from '../components/EngineeringHighlights.astro';
 ---
 
 <Layout>
     <ThemeToggle />
-	<main class="max-w-7xl mx-auto px-6 py-12 md:py-24" id="main-content">
+    <LanguagePicker />
+	<main class="max-w-7xl mx-auto px-8 py-12 md:py-24" id="main-content">
 	  <LeftSide />
       <Manifesto />
 	  <EngineeringHighlights />

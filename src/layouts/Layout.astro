@@ -1,5 +1,6 @@
 ---
 import '../styles/main.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
 	title?: string;
@@ -7,9 +8,12 @@ interface Props {
 	image?: string;
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const { 
 	title = "Johnny Charcosset : Product Engineer & Senior Fullstack",
-	description = "Plus de 10 ans d'expertise dans la conception d'applications web et mobiles. Spécialiste Med-Tech, Cross-platform (Ionic/Capacitor) et SaaS haute vélocité (Laravel/Filament).",
+	description = t('layout.description'),
 	image = "https://media.licdn.com/dms/image/v2/D4E03AQGmYuzA2vy0Ow/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1684765953123?e=1750896000&v=beta&t=uQ-U2G_lDub4fR2WuD-0fDZB57044aalb-h1wmuGcyw"
 } = Astro.props;
 
@@ -17,7 +21,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
   		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,12 +64,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 				"https://github.com/JohnnyEvo",
 				"https://www.linkedin.com/in/johnnycharcosset/"
 			],
-			"jobTitle": "Ingénieur Front-end Senior & Expert A11y",
-			"worksFor": {
-				"@type": "Organization",
-				"name": "Boli"
-			},
-			"description": "Ingénieur Front-end spécialisé en Cross-Platform et Med-Tech. Expert en accessibilité web, performance et design moderne.",
+			"jobTitle": "Product Engineer & Senior Fullstack",
+			"description": "Product Engineer spécialisé en architectures cross-platform et SaaS. Expert en accessibilité, performance et éthique numérique.",
 			"knowsAbout": [
 				"Accessibilité Web",
 				"Développement Frontend",
